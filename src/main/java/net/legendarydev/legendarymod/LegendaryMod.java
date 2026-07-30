@@ -1,5 +1,6 @@
 package net.legendarydev.legendarymod;
 
+import net.legendarydev.legendarymod.block.ModBlocks;
 import net.legendarydev.legendarymod.item.ModItems;
 import org.slf4j.Logger;
 
@@ -45,6 +46,7 @@ public class LegendaryMod {
         modEventBus.addListener(this::commonSetup);
 
         ModItems.register(modEventBus);
+        ModBlocks.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in.
         // Note that this is necessary if and only if we want *this* class (LegendaryMod) to respond directly to events.
@@ -76,12 +78,13 @@ public class LegendaryMod {
         if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
             event.accept(ModItems.TITANIUM_INGOT);
         }
+        if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS){
+            event.accept(ModBlocks.TITANIUM_BLOCK);
+        }
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
-        // Do something when the server starts
-        LOGGER.info("HELLO from server starting");
     }
 }
