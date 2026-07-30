@@ -10,7 +10,7 @@ public class ModItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(LegendaryMod.MOD_ID);
 
     public static final DeferredItem<Item> TITANIUM_INGOT = ITEMS.register("titanium_ingot",
-            ()-> new Item(new Item.Properties()));
+            () -> new Item(new Item.Properties()));
 
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);
